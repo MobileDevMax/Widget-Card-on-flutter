@@ -1,0 +1,73 @@
+import 'package:flutter/material.dart';
+
+void main() {
+  runApp(MyApp());
+}
+
+class MyApp extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      title: 'Widget Card',
+      theme: ThemeData(
+        primarySwatch: Colors.blue,
+      ),
+      home: CardListScreen(),
+    );
+  }
+}
+
+class CardListScreen extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Widget Card'),
+      ),
+      body: ListView(
+        padding: EdgeInsets.all(16.0),
+        children: <Widget>[
+          _buildCard('Card 1', 'This is Card 1.'),
+          SizedBox(height: 10),
+          _buildCard('Card 2', 'This is Card 2.'),
+          SizedBox(height: 10),
+          _buildCard('Card 3', 'This is Card 3.'),
+          SizedBox(height: 10),
+          _buildCard('Card 4', 'This is Card 4.'),
+        ],
+      ),
+    );
+  }
+
+  Widget _buildCard(String title, String description) {
+    return Card(
+      elevation: 4,
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(12),
+      ),
+      child: Padding(
+        padding: EdgeInsets.all(16.0),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: <Widget>[
+            Text(
+              title,
+              style: TextStyle(
+                fontSize: 18,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+            SizedBox(height: 8),
+            Text(
+              description,
+              style: TextStyle(
+                fontSize: 14,
+                color: Colors.grey[700],
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
